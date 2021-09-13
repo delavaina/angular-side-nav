@@ -1,0 +1,37 @@
+<div class="sidenav" [class]="{collapsed: sidenavCollapsed ? 'true' : null}">
+    <div class="sidenav-menu">
+        <button class="floating-button" (click)="sidenavCollapsed = !sidenavCollapsed;">
+            <i class="fas fa-chevron-left chevron"></i>
+        </button>
+        <div class="menu-container">
+            <div class="title">
+                <img class="min-logo" src="https://airhopping.blob.core.windows.net/static/img/logo/airhopping-logo-min-verde.png" *ngIf="sidenavCollapsed">
+                <img class="full-logo" src="https://airhopping.blob.core.windows.net/static/img/logo/2020/airhopping-verde.png" *ngIf="!sidenavCollapsed">
+            </div>
+            <div class="button-wrapper">
+                <a class="sidenav-button" routerLink="/" routerLinkActive="active">
+                    <i class="fas fa-home"></i> <span [hidden]="sidenavCollapsed">Home</span>
+                </a>
+            </div>
+            <div class="button-wrapper">
+                <a class="sidenav-button" routerLink="/check-in" routerLinkActive="active">
+                    <i class="fas fa-wallet"></i> <span [hidden]="sidenavCollapsed">Check-in</span>
+                </a>
+            </div>
+            <div class="button-wrapper">
+                <a class="sidenav-button" routerLink="/billing" routerLinkActive="active">
+                    <i class="fas fa-money-check-alt"></i> <span [hidden]="sidenavCollapsed">Billing</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="sidenav-content">
+        <div class="sidenav-mobile-header">
+            <i class="fas fa-bars" (click)="sidenavCollapsed = !sidenavCollapsed;"></i>
+        </div>
+        <div class="backdrop" *ngIf="!sidenavCollapsed" (click)="sidenavCollapsed = true"></div>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
